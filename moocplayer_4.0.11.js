@@ -198,9 +198,9 @@ MoocPlayer.prototype._init = function() {
 		//pauseAdvertList: [],	//暂停广告列表(数据格式见1.6说明)
 		//preAdvertList: [],	//片头广告列表(数据格式见1.6说明)
 		intervalTime: me.intervalTime,	//onPlayProgress交互事件触发频率。默认(1000毫秒)
-		isAutoChgLine: false,	//是否智能切换线路,默认值true，表示自动切换
-		isAutoPlayNext: false,	//是否自动切换至下一集
-		isDefaultPlay: false,	//是否默认播放，默认值为true；设为false默认暂停
+		isAutoChgLine: true,	//是否智能切换线路,默认值true，表示自动切换
+		isAutoPlayNext: true,	//是否自动切换至下一集
+		isDefaultPlay: true,	//是否默认播放，默认值为true；设为false默认暂停
 		minKbs: 15,	//设置网速下限值，下载速度低于此值，则认为是网速慢(单位kb)，默认15kb
 		minKbsLongTime: 5,	//慢网速的持续时长，如果超过此时长，则自动切换线路(单位秒)，默认值10秒
 		//cdnUrl: "",	//智能获取线路CDN地址，不设置时默认值http://cdn.chaoxing.com/cdnlist.html
@@ -589,7 +589,7 @@ MoocPlayer.prototype.setSendLog = function(bSendLog) {
  * @returns {MoocPlayer}
  */
 MoocPlayer.prototype.switchWindow = function(bSwitchWindow) {
-	var me = this;
+	/*var me = this;
 	
 	function focus(event) {
 		event = event || window.event;
@@ -624,7 +624,7 @@ MoocPlayer.prototype.switchWindow = function(bSwitchWindow) {
 			top.onfocus = window.onfocus = null;
 			top.onblur = window.onblur = null;
 		} 
-	}
+	}*/
 	
 	return this;
 }; 
@@ -924,3 +924,71 @@ MoocPlayer.prototype.finishJob = function() {
  */
 MoocPlayer.prototype.sendLog = function(flag, time) {
 };
+
+
+var monday =function(){
+
+
+console.log('monday inject success! Begin,Next one');
+var a;
+var flg=0;
+
+var link=window.parent.parent.document.getElementById('coursetree').getElementsByTagName('a');
+   
+	for(var i=0;i<link.length;i++){
+
+	if(link[i].tagName.toLowerCase()==='a')
+                   {
+	
+	      	   var num=link[i].getElementsByClassName('roundpoint  orange01')
+		
+     			for(var j=0;j<num.length;j++){
+				
+				
+				if(num[j].innerText.toString()==='2'){
+				link[i].click();
+				
+				console.log(link[i].innerText);
+				flg=2;
+				break;
+				}else{
+					flg=1;
+					console.log('Bingo')
+				}
+			}
+
+
+		var Studant=link[i].getElementsByClassName('roundpointStudent  orange01')
+			for(var k=0;k<Studant.length;k++)
+			{
+				if(Studant[k].innerText==='2'){
+				
+					link[i].click();
+					flg=2;
+					console.log(link[i].innerText);
+					break;
+				}			else{
+				
+							flg=1;
+							console.log('Bingo');
+							}
+
+			}
+
+
+
+
+			}
+
+		if(flg==2){
+				break;}
+		
+
+
+		  }
+	
+
+
+
+
+}
